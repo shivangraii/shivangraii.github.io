@@ -63,28 +63,9 @@ a:hover { text-decoration-thickness: 2px; }
   padding-inline: max(16px, env(safe-area-inset-left, 0px));
   border-bottom: 1px solid var(--line);
 }
-.mast .bar { max-width: var(--measure); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.75rem; }
+.mast .bar { max-width: var(--measure); margin: 0 auto; display: flex; align-items: center; min-height: 3.5rem; }
 .mast .site { font: 600 1.05rem var(--font-display); color: var(--muted); text-decoration: none; letter-spacing: .01em; }
 .mast .site:hover { color: var(--accent); }
-.menu-btn {
-  width: 2.75rem; height: 2.75rem; border: 0; border-radius: 3px; cursor: pointer;
-  background: var(--muted); display: grid; place-content: center; gap: 5px;
-}
-.menu-btn span { display: block; width: 1.4rem; height: 3px; background: var(--bg); }
-.menu-btn:hover { background: var(--accent); }
-.nav { max-width: var(--measure); margin: 0 auto; padding-bottom: .75rem; display: grid; gap: .1rem; }
-.nav a { padding: .45rem 0; text-decoration: none; color: var(--fg); font-weight: 500; border-bottom: 1px solid var(--line); }
-.nav a:hover { color: var(--accent); }
-@media (min-width: 700px) {
-  .menu-btn { display: none; }
-  .nav[hidden] { display: flex !important; }
-  .mast .bar { min-height: 3.5rem; }
-  .mast { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; }
-  .mast .bar { flex: 0 0 auto; margin: 0; width: auto; margin-right: auto; }
-  .nav { margin: 0; padding: 0; flex: 0 0 auto; gap: 1.4rem; }
-  .nav a { border: 0; padding: .25rem 0; font-size: .92rem; }
-  .mast { max-width: none; }
-}
 
 /* Profile */
 .profile { display: flex; align-items: center; gap: 1rem; padding-block: 1.75rem 0; flex-wrap: wrap; }
@@ -144,15 +125,7 @@ footer { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--l
 <header class="mast">
   <div class="bar">
     <a class="site" href="#top">Shivang Rai's Homepage</a>
-    <button class="menu-btn" id="menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
   </div>
-  <nav class="nav" id="nav" hidden aria-label="Sections">
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#research">Research</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-  </nav>
 </header>
 
 <main class="wrap" id="top">
@@ -197,7 +170,7 @@ footer { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--l
 
   <h3 class="sec" id="projects">Projects</h3>
   <article class="entry">
-    <div class="head"><h4>StudyLens: Multimodal Study Notebook</h4><span class="ref"><a href="#">Live Demo</a> · <a href="#">GitHub</a></span></div>
+    <div class="head"><h4>StudyLens: Multimodal Study Notebook</h4></div>
     <ul class="tags"><li>Python</li><li>Qdrant</li><li>Sentence-Transformers</li></ul>
     <ul>
       <li>Built a multimodal RAG assistant for lectures, PDFs and web pages, generating context-grounded answers with page- and timestamp-level citations.</li>
@@ -206,7 +179,7 @@ footer { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--l
     </ul>
   </article>
   <article class="entry">
-    <div class="head"><h4>Sentinel: Agentic RAG Research Assistant (SIC'26)</h4><span class="ref"><a href="#">GitHub</a></span></div>
+    <div class="head"><h4>Sentinel: Agentic RAG Research Assistant (SIC'26)</h4></div>
     <ul class="tags"><li>LangChain</li><li>LangGraph</li><li>ChromaDB</li><li>SQL</li></ul>
     <ul>
       <li>Developed a multi-agent RAG system using LangChain and LangGraph, integrating tool orchestration, contextual reasoning and persistent memory.</li>
@@ -218,14 +191,14 @@ footer { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--l
   <h3 class="sec" id="research">Research Publications</h3>
   <article class="entry">
     <div class="head"><h4>Manufactured Neutrality: Auditing Latent Inference Bias in Large Language Models</h4></div>
-    <div class="where">Shivang Rai, Sachin Gupta · IEEE ICCISCS, December 2026</div>
+    <div class="where">Shivang Rai, Sachin Gupta · IEEE ICCISCS · <span class="status">Under Review</span></div>
     <ul>
       <li>Built a 5-metric framework to audit identity-conditioned bias across 5 matched themes. Found that alignment relocates bias rather than removing it, with Gemini's refusals bypassed by rephrasing alone.</li>
     </ul>
   </article>
   <article class="entry">
     <div class="head"><h4>Expected Calibration Error of Token-Probability Confidence in Open-Weight LLMs on SimpleQA</h4></div>
-    <div class="where">Shivang Rai, Sheen Ambardar, Om Tripathi, Sachin Gupta · IEEE, <span class="status">Under Review</span></div>
+    <div class="where">Shivang Rai, Sheen Ambardar, Om Tripathi, Sachin Gupta · IEEE · <span class="status">Under Review</span></div>
     <ul>
       <li>Benchmarked 5 open-weight LLMs on 1,100 SimpleQA questions (ECE, Brier, AUROC, bootstrap CIs). Found all models overconfident (ECE 0.47–0.67) with near-chance confidence ranking.</li>
     </ul>
@@ -272,21 +245,5 @@ footer { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--l
 
   <footer>© 2026 Shivang Rai · Delhi, India</footer>
 </main>
-
-<script>
-(function () {
-  var btn = document.getElementById("menu-btn");
-  var nav = document.getElementById("nav");
-  if (!btn || !nav) return;
-  function setOpen(open) {
-    nav.hidden = !open;
-    btn.setAttribute("aria-expanded", open ? "true" : "false");
-  }
-  btn.addEventListener("click", function () { setOpen(nav.hidden); });
-  nav.addEventListener("click", function (e) {
-    if (e.target.tagName === "A" && window.innerWidth < 700) setOpen(false);
-  });
-})();
-</script>
 </body>
 </html>
