@@ -39,10 +39,42 @@ a { color: inherit; }
 #sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; display: block; }
 .page { position: relative; z-index: 1; max-width: var(--measure); margin: 0 auto; }
 
+
+/* Blue opener: animated sky that fades into the dark starfield below */
+.sky { position: absolute; top: 0; left: 0; right: 0; height: var(--skyh, 125svh); z-index: 0; overflow: hidden; pointer-events: none;
+  background: linear-gradient(180deg, #0a33c2 0%, #1b57ec 42%, #3a82ff 72%, #0a0a0b 100%);
+  -webkit-mask-image: linear-gradient(#000 68%, transparent 100%); mask-image: linear-gradient(#000 68%, transparent 100%); }
+.sky::after { content: ""; position: absolute; inset: 0; opacity: .16; mix-blend-mode: overlay; pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+.blob { position: absolute; border-radius: 50%; will-change: transform; animation: drift 26s ease-in-out infinite alternate; }
+.b1 { width: 64vmax; height: 64vmax; left: -18vmax; top: -24vmax; background: radial-gradient(circle, #79b8ff 0%, transparent 66%); }
+.b2 { width: 54vmax; height: 54vmax; right: -16vmax; top: 4vh; background: radial-gradient(circle, #2a63ff 0%, transparent 66%); animation-duration: 33s; animation-delay: -9s; }
+.b3 { width: 50vmax; height: 50vmax; left: 12%; bottom: -14vmax; background: radial-gradient(circle, #b4dcff 0%, transparent 62%); opacity: .6; animation-duration: 39s; animation-delay: -15s; }
+.b4 { width: 26vmax; height: 26vmax; left: 52%; top: 12%; background: radial-gradient(circle, rgba(255,255,255,.75) 0%, transparent 62%); opacity: .35; animation-duration: 21s; animation-delay: -4s; }
+@keyframes drift { 0% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(7vmax,4vmax,0) scale(1.12); } 100% { transform: translate3d(-6vmax,8vmax,0) scale(.94); } }
+.over-blue .top { background: transparent; border-bottom-color: transparent; backdrop-filter: none; }
+.over-blue .logo { color: #fff; }
+.over-blue .top nav a { color: rgba(255,255,255,.88); }
+.over-blue .top nav a.resume { background: #fff; color: #0a33c2; }
+.over-blue .meter { opacity: 0; }
+.meter { transition: opacity .3s; }
+@media (prefers-reduced-motion: reduce) { .blob { animation: none; } }
+
+
+/* Blue sky again at the bottom, like coming back down to Earth */
+body { position: relative; }
+.sky-end { position: absolute; left: 0; right: 0; bottom: 0; height: var(--endh, 90svh); z-index: 0; overflow: hidden; pointer-events: none;
+  background: linear-gradient(0deg, #3a82ff 0%, #1b57ec 38%, #0a33c2 68%, #0a0a0b 100%);
+  -webkit-mask-image: linear-gradient(0deg, #000 66%, transparent 100%); mask-image: linear-gradient(0deg, #000 66%, transparent 100%); }
+.sky-end::after { content: ""; position: absolute; inset: 0; opacity: .16; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+.e1 { width: 60vmax; height: 60vmax; left: -16vmax; bottom: -26vmax; background: radial-gradient(circle, #b4dcff 0%, transparent 64%); opacity: .7; animation-duration: 30s; }
+.e2 { width: 52vmax; height: 52vmax; right: -14vmax; bottom: -10vmax; background: radial-gradient(circle, #79b8ff 0%, transparent 64%); animation-duration: 36s; animation-delay: -11s; }
+.e3 { width: 30vmax; height: 30vmax; left: 40%; bottom: 8%; background: radial-gradient(circle, rgba(255,255,255,.7) 0%, transparent 62%); opacity: .3; animation-duration: 24s; animation-delay: -6s; }
+
 /* Top bar */
 .top {
-  position: sticky; top: 0; z-index: 20;
-  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  position: fixed; top: 0; left: 0; right: 0; z-index: 20; transition: background .3s, border-color .3s;
   padding: max(.7rem, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) .7rem max(16px, env(safe-area-inset-left, 0px));
   background: color-mix(in srgb, var(--bg) 94%, transparent);
   border-bottom: 1px solid var(--line);
@@ -87,6 +119,11 @@ h2 { font: 800 clamp(2rem, 6.5vw, 3.6rem)/1.04 var(--font-display); letter-spaci
 .btn.ghost:hover { color: var(--accent); border-color: var(--accent); background: transparent; }
 .hint { font: 400 .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 
+.hero .label, .hero .hint { color: rgba(255,255,255,.82); }
+.hero .facts div { border-top-color: rgba(255,255,255,.3); }
+.hero .btn.ghost { border-color: rgba(255,255,255,.5); }
+.hero .stack { border-color: rgba(255,255,255,.35); }
+
 /* Cycling photos */
 .stack { position: relative; aspect-ratio: 4 / 5; width: 100%; max-width: 26rem; margin-left: auto; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: var(--panel); cursor: pointer; }
 .stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; opacity: 0; transform: scale(1.04); transition: opacity .9s ease, transform 4s ease; }
@@ -96,7 +133,7 @@ h2 { font: 800 clamp(2rem, 6.5vw, 3.6rem)/1.04 var(--font-display); letter-spaci
 .dots button { width: .6rem; height: .6rem; padding: 0; border-radius: 50%; border: 1px solid var(--muted); background: transparent; cursor: pointer; }
 .dots button[aria-current="true"] { background: var(--accent); border-color: var(--accent); }
 @media (max-width: 820px) {
-  .hero { grid-template-columns: minmax(0, 1fr); grid-template-areas: "name" "photo" "info"; padding-top: 3.5rem; min-height: 0; row-gap: 1.6rem; }
+  .hero { grid-template-columns: minmax(0, 1fr); grid-template-areas: "name" "photo" "info"; padding-top: 6.2rem; min-height: 0; row-gap: 1.6rem; }
   .stack, .pbar { margin-left: 0; max-width: 20rem; }
 }
 
@@ -160,6 +197,10 @@ footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem;
 footer li { overflow-wrap: anywhere; }
 footer .fine { grid-column: 1 / -1; color: var(--muted); font: 400 .78rem var(--font-mono); letter-spacing: .06em; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; }
 
+footer h3, footer .fine { color: rgba(255,255,255,.88); }
+footer { border-top-color: rgba(255,255,255,.28); }
+footer .fine .ln:hover { color: #fff; }
+
 /* Flight meter */
 .meter { position: fixed; z-index: 15; left: max(16px, env(safe-area-inset-left, 0px)); bottom: max(14px, env(safe-area-inset-bottom, 0px)); font: 400 .7rem var(--font-mono); letter-spacing: .12em; color: var(--muted); text-transform: uppercase; display: flex; gap: .7rem; align-items: center; pointer-events: none; background: color-mix(in srgb, var(--bg) 80%, transparent); padding: .25rem .5rem; border-radius: 4px; }
 .meter i { display: block; width: 3.5rem; height: 2px; background: var(--line); position: relative; }
@@ -177,6 +218,8 @@ footer .fine { grid-column: 1 / -1; color: var(--muted); font: 400 .78rem var(--
 <body>
 <canvas id="sky" aria-hidden="true"></canvas>
 
+<div class="sky" id="sky-bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+
 <div class="page">
   <header class="top">
     <div class="in">
@@ -192,7 +235,7 @@ footer .fine { grid-column: 1 / -1; color: var(--muted); font: 400 .78rem var(--
   </header>
 
   <main id="top">
-    <section class="hero" aria-label="Introduction">
+    <section class="hero" id="intro" aria-label="Introduction">
       <div class="h-name">
         <span class="label">Portfolio · 2026</span>
         <h1><span>Shivang</span><span>Rai</span></h1>
@@ -375,6 +418,8 @@ footer .fine { grid-column: 1 / -1; color: var(--muted); font: 400 .78rem var(--
   </footer>
 </div>
 
+<div class="sky-end" id="sky-end" aria-hidden="true"><div class="blob e1"></div><div class="blob e2"></div><div class="blob e3"></div></div>
+
 <div class="meter" aria-hidden="true"><span id="pct">000</span><i id="bar"></i><span>% flown</span></div>
 
 <script>
@@ -462,6 +507,23 @@ footer .fine { grid-column: 1 / -1; color: var(--muted); font: 400 .78rem var(--
   stack.addEventListener("mouseleave", start);
   document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); else start(); });
   show(0); start();
+
+
+  /* Blue sky behind the top section, fading into space as you scroll */
+  var sky = document.getElementById("sky-bg"), intro = document.getElementById("intro"), root = document.documentElement;
+  function introBottom() { return intro.getBoundingClientRect().bottom + window.scrollY; }
+  var skyEnd = document.getElementById("sky-end"), foot = document.getElementById("contact");
+  function sizeSky() {
+    sky.style.setProperty("--skyh", Math.round(introBottom() + window.innerHeight * 0.35) + "px");
+    var docH = document.documentElement.scrollHeight, footTop = foot.getBoundingClientRect().top + window.scrollY;
+    skyEnd.style.setProperty("--endh", Math.round(docH - footTop + window.innerHeight * 0.45) + "px");
+    onScroll();
+  }
+  function onScroll() { root.classList.toggle("over-blue", window.scrollY < introBottom() * 0.45); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", sizeSky);
+  window.addEventListener("load", sizeSky);
+  sizeSky();
 
   /* Reveal on scroll, from a readable baseline */
   var items = document.querySelectorAll(".rise");
