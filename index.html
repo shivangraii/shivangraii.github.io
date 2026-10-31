@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0b">
-<meta name="description" content="Shivang Rai: B.Tech ECE (VLSI) student at MAIT Delhi working on RAG, agentic AI and LLM evaluation.">
+<meta name="description" content="Shivang Rai: B.Tech Electronics student at MAIT Delhi working on RAG, agentic AI and LLM evaluation.">
 <title>Shivang Rai Homepage</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b57ec'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='30' fill='white'%3ESR%3C/text%3E%3C/svg%3E">
 <script>
@@ -19,7 +19,7 @@
 })();
 </script>
 <noscript><style>.stack img:first-child { opacity: 1; transform: none; }</style></noscript>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Syne:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Mrs+Saint+Delafield&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Syne:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Patrick+Hand&family=Mrs+Saint+Delafield&display=swap">
 <style>
 /* Layout: single-column "flight" page. The blue sky now runs from the top through the welcome note, then fades into the starfield. Hero is two columns (name and facts left, photo right). */
 :root, [data-theme="dark"] {
@@ -314,6 +314,40 @@ details.row .body { padding-left: calc(9.5rem + 1.5rem); }
 /* footer */
 footer { border-top: 0; background: var(--g-bg); border: 1px solid var(--g-line); border-radius: 28px; box-shadow: var(--g-shadow); padding: 2rem clamp(1.2rem, 4vw, 2.5rem) 1.8rem; -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%); }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .glass,.top .in,.card,.letter .paper,details.row,footer { background: rgba(30,50,140,.55); } }
+
+/* ===== Name pill + hamburger menu ===== */
+.top .in, [data-theme="dark"] .top .in, [data-theme="light"] .over-blue .top .in { background: none; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; border-radius: 0; flex-wrap: nowrap; position: relative; margin-top: .3rem; }
+.top .logo { pointer-events: auto; padding: .55rem 1.1rem; border-radius: 999px; background: var(--g-bg); border: 1px solid var(--g-line); box-shadow: var(--g-shadow); -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%); }
+[data-theme="dark"] .top .logo, [data-theme="dark"] .burger, [data-theme="dark"] .top nav { background: linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.04)), rgba(10,12,24,.45); }
+[data-theme="light"] .over-blue .top .logo, [data-theme="light"] .over-blue .burger { background: linear-gradient(135deg, rgba(255,255,255,.2), rgba(255,255,255,.07)), rgba(10,30,120,.25); color: #fff; }
+.burger { pointer-events: auto; display: inline-flex; flex-direction: column; justify-content: center; gap: 4px; width: 2.7rem; height: 2.7rem; padding: 0 .8rem; border-radius: 999px; cursor: pointer; background: var(--g-bg); border: 1px solid var(--g-line); box-shadow: var(--g-shadow); -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%); }
+.burger span { display: block; height: 2px; border-radius: 2px; background: var(--g-text); transition: transform .25s, opacity .2s; }
+.over-blue .burger span { background: #fff; }
+[data-theme="dark"] .burger span { background: #fff; }
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+.top nav { position: absolute; top: calc(100% + .6rem); right: 0; width: min(18rem, 100%); flex-direction: column; align-items: stretch; flex-wrap: nowrap; gap: .2rem; padding: .7rem; border-radius: 24px; pointer-events: auto;
+  background: var(--g-bg); border: 1px solid var(--g-line); box-shadow: var(--g-shadow); -webkit-backdrop-filter: blur(22px) saturate(180%); backdrop-filter: blur(22px) saturate(180%);
+  opacity: 0; visibility: hidden; transform: translateY(-8px) scale(.98); transform-origin: top right; transition: opacity .2s, transform .2s, visibility .2s; }
+.top nav.open { opacity: 1; visibility: visible; transform: none; }
+.top nav a { padding: .7rem 1rem; border-radius: 14px; font-size: .8rem; }
+.top nav a:hover { background: rgba(255,255,255,.14); }
+.top nav a.resume, .over-blue .top nav a.resume { text-align: center; margin-top: .3rem; padding: .7rem 1rem; }
+.top nav .theme { justify-content: center; margin-top: .2rem; padding: .6rem 1rem; }
+[data-theme="light"] .top nav, [data-theme="light"] .top nav a, [data-theme="light"] .top nav .theme { color: var(--fg); }
+[data-theme="light"] .over-blue .top nav { background: linear-gradient(135deg, rgba(255,255,255,.7), rgba(255,255,255,.5)); }
+[data-theme="light"] .over-blue .top nav a, [data-theme="light"] .over-blue .top nav .theme { color: var(--fg); }
+/* meter steps aside near the footer so it never covers it */
+.meter { transition: opacity .3s; }
+.at-end .meter { opacity: 0; pointer-events: none; }
+footer { margin-bottom: 0; position: relative; top: -1.25rem; }
+/* ===== Handwritten letter ===== */
+.letter .paper, .letter .paper p { font-family: "Patrick Hand", "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive; }
+.letter .label { font: 400 1.3rem "Patrick Hand", cursive; letter-spacing: .02em; text-transform: none; }
+.letter h2 { font: 400 clamp(3.2rem, 10vw, 5rem)/1 "Patrick Hand", "Segoe Print", cursive; letter-spacing: 0; }
+.letter p { font-size: clamp(1.3rem, 3.4vw, 1.6rem); line-height: 1.5; }
+.sign .dash { font: 400 1.35rem "Patrick Hand", cursive; letter-spacing: .02em; text-transform: none; }
 </style>
 </head>
 <body>
@@ -325,7 +359,8 @@ footer { border-top: 0; background: var(--g-bg); border: 1px solid var(--g-line)
   <header class="top">
     <div class="in">
       <a class="logo" href="#top">Shivang Rai</a>
-      <nav aria-label="Sections">
+      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+      <nav aria-label="Sections" id="menu">
         <a href="#letter">Note</a>
         <a href="#selected">Selected</a>
         <a href="#experience">Experience</a>
@@ -360,7 +395,7 @@ footer { border-top: 0; background: var(--g-bg); border: 1px solid var(--g-line)
       <div class="h-info">
         <div class="facts">
           <div><span class="label">Currently</span><span>Content Ideation at <a class="ln" href="https://flamapp.ai" target="_blank" rel="noopener">Flam AI</a></span></div>
-          <div><span class="label">Studying</span><span>B.Tech ECE (VLSI) at <a class="ln" href="https://www.mait.ac.in" target="_blank" rel="noopener">MAIT</a> Delhi, 2028</span></div>
+          <div><span class="label">Studying</span><span>B.Tech Electronics at <a class="ln" href="https://www.mait.ac.in" target="_blank" rel="noopener">MAIT</a> Delhi, 2028</span></div>
           <div><span class="label">Based in</span><span>Delhi, India</span></div>
         </div>
         <p class="intro">I build retrieval-augmented and agentic AI systems, and I audit how large language models behave when they are biased or overconfident.</p>
@@ -377,7 +412,7 @@ footer { border-top: 0; background: var(--g-bg); border: 1px solid var(--g-line)
         <span class="label rise">A note from me</span>
         <h2 class="rise">Hey,</h2>
         <p class="rise">welcome to this little corner of the internet.</p>
-        <p class="rise">I'm Shivang, a third-year ECE (VLSI) student at MAIT Delhi who keeps drifting toward AI. Most of my time goes into retrieval systems, agents, and one question I can't leave alone: how do large language models behave when they are biased or overconfident?</p>
+        <p class="rise">I'm Shivang, a third-year Electronics student at MAIT Delhi who keeps drifting toward AI. Most of my time goes into retrieval systems, agents, and one question I can't leave alone: how do large language models behave when they are biased or overconfident?</p>
         <p class="rise">Right now I'm doing content ideation at <a class="ln" href="https://flamapp.ai" target="_blank" rel="noopener">Flam AI</a>, shaping AR/VR and interactive video ideas for public-sector projects. Earlier this year I interned at <a class="ln" href="https://www.drdo.gov.in/labs-and-establishments/solid-state-physics-laboratory-sspl" target="_blank" rel="noopener">DRDO's Solid State Physics Laboratory</a> on UAV swarm intelligence and terahertz systems, and I'm part of the <a class="ln" href="https://news.samsung.com/in/samsung-launches-2026-edition-of-samsung-innovation-campus-to-help-build-indias-ai-talent-pipeline" target="_blank" rel="noopener">Samsung Innovation Campus</a> AI Program 2026. Two of my papers, on bias and on calibration in LLMs, are under review.</p>
         <p class="rise">Everything is laid out below in order: selected projects, experience, research, and then my education, skills and certifications. If anything sounds interesting, write to me at <a class="ln" href="mailto:shivangrai999@gmail.com">shivangrai999@gmail.com</a>.</p>
         <div class="sign rise">
@@ -481,7 +516,7 @@ footer { border-top: 0; background: var(--g-bg); border: 1px solid var(--g-line)
           <div class="block">
             <h3>Education</h3>
             <div class="edu">
-              <div><b>B.Tech, Electronics Engg., VLSI Design &amp; Technology</b><span class="m">2028 · 8.06</span><small><a class="ln" href="https://www.ipu.ac.in" target="_blank" rel="noopener">GGSIPU</a>, <a class="ln" href="https://www.mait.ac.in" target="_blank" rel="noopener">Maharaja Agrasen Institute of Technology</a></small></div>
+              <div><b>B.Tech, Electronics Engineering</b><span class="m">2028 · 8.06</span><small><a class="ln" href="https://www.ipu.ac.in" target="_blank" rel="noopener">GGSIPU</a>, <a class="ln" href="https://www.mait.ac.in" target="_blank" rel="noopener">Maharaja Agrasen Institute of Technology</a></small></div>
               <div><b>Class XII</b><span class="m">2023 · 80.4%</span><small><a class="ln" href="https://educationworld.in/indraprastha-world-school/" target="_blank" rel="noopener">Indraprastha World School</a> · <a class="ln" href="https://www.cbse.gov.in" target="_blank" rel="noopener">CBSE</a></small></div>
               <div><b>Class X</b><span class="m">2021 · 89.9%</span><small><a class="ln" href="https://educationworld.in/indraprastha-world-school/" target="_blank" rel="noopener">Indraprastha World School</a> · <a class="ln" href="https://www.cbse.gov.in" target="_blank" rel="noopener">CBSE</a></small></div>
             </div>
@@ -656,6 +691,16 @@ footer { border-top: 0; background: var(--g-bg); border: 1px solid var(--g-line)
     skyEnd.style.setProperty("--endh", Math.round(docH - footTop + window.innerHeight * 0.45) + "px");
     onScroll();
   }
+
+  (function () {
+    var b = document.getElementById("burger"), m = document.getElementById("menu");
+    function set(o) { m.classList.toggle("open", o); b.setAttribute("aria-expanded", o ? "true" : "false"); b.setAttribute("aria-label", o ? "Close menu" : "Open menu"); }
+    b.addEventListener("click", function (e) { e.stopPropagation(); set(!m.classList.contains("open")); });
+    m.addEventListener("click", function (e) { if (e.target.closest("a")) set(false); });
+    document.addEventListener("click", function (e) { if (!m.contains(e.target)) set(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
+    window.addEventListener("scroll", function () { root.classList.toggle("at-end", window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 40 - 0.35 * window.innerHeight); }, { passive: true });
+  })();
   function onScroll() { root.classList.toggle("over-blue", window.scrollY < letterBottom() - 140); }
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", sizeSky);
